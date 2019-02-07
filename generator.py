@@ -55,6 +55,6 @@ def draw_captcha_char():
 draw_captcha_char()
 draw_points()
 captcha_img.show()
-
+captcha_img.save('demo.jpg')
 
 print(ans)
