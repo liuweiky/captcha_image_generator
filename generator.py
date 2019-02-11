@@ -21,6 +21,9 @@ trans_offset = 15
 point_number = 20
 point_radius = 2
 
+line_number = 3
+line_width = 3
+
 ans = []
 
 
@@ -33,6 +36,14 @@ def draw_points():
         x, y = randrange(0, captcha_size[0]), randrange(0, captcha_size[1])
         draw = ImageDraw.Draw(captcha_img)
         draw.ellipse((x - point_radius, y - point_radius, x + point_radius, y + point_radius), fill=rand_rgb())
+
+
+def draw_lines():
+    for i in range(line_number):
+        x1, y1 = randrange(0, captcha_size[0]), randrange(0, captcha_size[1])
+        x2, y2 = randrange(0, captcha_size[0]), randrange(0, captcha_size[1])
+        draw = ImageDraw.Draw(captcha_img)
+        draw.line((x1, y1, x2, y2), rand_rgb(), width=line_width)
 
 
 def draw_captcha_char():
@@ -54,6 +65,7 @@ def draw_captcha_char():
 
 draw_captcha_char()
 draw_points()
+draw_lines()
 captcha_img.show()
 captcha_img.save('demo.jpg')
 
